@@ -5,4 +5,5 @@ export type Env = {
   GOOGLE_SERVICE_ACCOUNT_EMAIL: string;
   GOOGLE_PRIVATE_KEY: string;
   GOOGLE_SHEETS_SPREADSHEET_ID: string;
+  ASSETS: Fetcher;
 };

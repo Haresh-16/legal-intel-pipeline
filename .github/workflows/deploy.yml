@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       # Worker unit/integration tests mock Sheets, The News API, and Groq —
@@ -34,9 +34,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
+
+      # Frontend must be built before wrangler deploy — the Worker bundles
+      # frontend/dist as static assets via [assets] in wrangler.toml.
+      - name: Build frontend
+        run: npm run build:frontend
 
       - name: Apply D1 migrations (remote)
         working-directory: worker
@@ -52,12 +57,6 @@ jobs:
           echo "${{ secrets.GOOGLE_PRIVATE_KEY }}" | npx wrangler secret put GOOGLE_PRIVATE_KEY
           echo "${{ secrets.GOOGLE_SHEETS_SPREADSHEET_ID }}" | npx wrangler secret put GOOGLE_SHEETS_SPREADSHEET_ID
 
-      - name: Deploy worker
+      - name: Deploy worker (includes bundled frontend assets)
         working-directory: worker
         run: npx wrangler deploy
-
-      - name: Build frontend
-        run: npm run build:frontend
-
-      - name: Deploy frontend to Cloudflare Pages
-        run: npx wrangler pages deploy frontend/dist --project-name=legal-intel-frontend

@@ -17,5 +17,7 @@ app.route("/api/cards", cardsRoute);
 app.route("/api/queue", outputsRoute);
 app.route("/api/approvals", approvalsRoute);
 
+app.all("*", (c) => c.env.ASSETS.fetch(c.req.raw));
+
 export default app;
 export type { Env };

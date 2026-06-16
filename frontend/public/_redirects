@@ -1,5 +1,0 @@
-# Proxies API calls from the Pages-hosted frontend to the deployed Worker,
-# since the frontend's API client calls relative /api paths.
-# Replace YOUR_SUBDOMAIN (or swap in a custom workers.dev route) after the
-# worker's first `wrangler deploy`.
-/api/*  https://legal-intel-worker.hareshdev.workers.dev/api/:splat  200

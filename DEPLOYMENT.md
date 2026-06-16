@@ -119,43 +119,36 @@ Sign up at [thenewsapi.com](https://www.thenewsapi.com) → copy your free-tier 
 
 ## Step 5 — First manual deploy
 
-Run all of these from the `worker/` directory (with `wrangler.toml` already updated in Step 1):
+The Worker bundles the React frontend as static assets (via `[assets]` in `wrangler.toml`),
+so you must build the frontend **before** running `wrangler deploy`. Both ship in one command —
+no separate Cloudflare Pages deployment is needed.
 
 ```bash
-cd /d/AI_Intake_Agent/Interview_Assignment/worker
+# 1. Build the frontend (from repo root)
+cd /d/AI_Intake_Agent/Interview_Assignment
+npm run build:frontend
 
-# Apply DB migrations to the remote D1 database
+# 2. Apply DB migrations to the remote D1 database
+cd worker
 npx wrangler d1 migrations apply legal-intel-db --remote
 
-# Push the 5 app secrets to the Worker
+# 3. Push the 5 app secrets to the Worker
 echo "YOUR_GROQ_KEY"                            | npx wrangler secret put GROQ_API_KEY
 echo "YOUR_NEWS_TOKEN"                          | npx wrangler secret put THE_NEWS_API_TOKEN
 echo "sa@your-project.iam.gserviceaccount.com" | npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_EMAIL
-echo "-----BEGIN RSA PRIVATE KEY-----\n..."     | npx wrangler secret put GOOGLE_PRIVATE_KEY
+echo "-----BEGIN PRIVATE KEY-----\n..."         | npx wrangler secret put GOOGLE_PRIVATE_KEY
 echo "1BxS_your_spreadsheet_id"                | npx wrangler secret put GOOGLE_SHEETS_SPREADSHEET_ID
 
-# Deploy the Worker
+# 4. Deploy — Worker + bundled frontend in one command
 npx wrangler deploy
 ```
 
-The last command prints your worker URL, e.g.:
+The deploy command prints your URL:
 ```
-https://legal-intel-worker.YOUR_SUBDOMAIN.workers.dev
-```
-
-**Update `frontend/public/_redirects`** — replace `YOUR_SUBDOMAIN` with the real value printed above:
-```
-/api/*  https://legal-intel-worker.YOUR_SUBDOMAIN.workers.dev/api/:splat  200
+https://legal-intel-worker.hareshdev.workers.dev
 ```
 
-Then build and deploy the frontend (from the repo root):
-```bash
-cd /d/AI_Intake_Agent/Interview_Assignment
-npm run build:frontend
-npx wrangler pages deploy frontend/dist --project-name=legal-intel-frontend
-```
-
-The Pages deploy prints the live frontend URL (e.g. `https://legal-intel-frontend.pages.dev`).
+Both the API (`/api/*`) and the React SPA are served from this single URL.
 
 ---
 
@@ -176,10 +169,10 @@ Push the repo to GitHub, then add **7 secrets** under
 
 After that, every push to `main` automatically:
 1. Runs all Vitest + Playwright tests (no live secrets needed — all mocked)
-2. Applies any new D1 migrations
-3. Syncs the 5 app secrets to the Worker
-4. Deploys the Worker
-5. Builds and deploys the frontend to Pages
+2. Builds the frontend
+3. Applies any new D1 migrations
+4. Syncs the 5 app secrets to the Worker
+5. Deploys the Worker (with the frontend bundled as static assets)
 
 ---
 
@@ -196,7 +189,7 @@ npm run dev:frontend   # http://localhost:5173 (proxies /api → :8787)
 
 ## Verification after deploy
 
-1. Open the Pages URL → paste Sample A text into **Manual Intake** → submit.
+1. Open `https://legal-intel-worker.hareshdev.workers.dev` → paste Sample A text into **Manual Intake** → submit.
 2. Open your Google Sheet — rows should appear in `Source Registry`, `Intelligence Cards`, `Claims Ledger`, `Output Queue`.
 3. Go to `/queue` — the public draft should show a `HOLD — pending approval` badge.
 4. Go to `/news` → click **Fetch candidates** → click **Ingest** on one → check the Sheet again.
@@ -208,6 +201,3 @@ npm run dev:frontend   # http://localhost:5173 (proxies /api → :8787)
 
 Before first deploy:
 - **`worker/wrangler.toml` line 8** — replace `REPLACE_WITH_REAL_D1_DATABASE_ID` with the ID from Step 1.
-
-After first `wrangler deploy`:
-- **`frontend/public/_redirects`** — replace `YOUR_SUBDOMAIN` with the actual workers.dev subdomain printed by the deploy command.
