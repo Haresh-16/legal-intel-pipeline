@@ -26,13 +26,14 @@ export const sourceRegistry = sqliteTable("source_registry", {
 
 export const rawEvidenceVault = sqliteTable("raw_evidence_vault", {
   evidenceId: text("evidence_id").primaryKey(),
-  sourceId: text("source_id")
-    .notNull()
-    .references(() => sourceRegistry.sourceId),
+  // FK intentionally omitted — raw_evidence_vault is insert-only by trigger,
+  // so rollback can never delete these rows. A DB-level FK on source_id would
+  // block compensating deletes of source_registry rows during pipeline rollback.
+  // The pipeline always inserts source_registry before raw_evidence_vault,
+  // so source_id is always valid at insert time without needing a FK guard.
+  sourceId: text("source_id").notNull(),
   rawText: text("raw_text").notNull(),
   capturedAt: text("captured_at").notNull(),
-  // insert-only: enforced by a DB trigger (migration) and by never exposing an
-  // update/delete method from the repository layer.
 });
 
 export const intelligenceCards = sqliteTable("intelligence_cards", {

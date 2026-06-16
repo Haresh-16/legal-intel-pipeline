@@ -37,7 +37,8 @@ intakeRoute.post("/", async (c) => {
     return c.json(result, 201);
   } catch (err) {
     if (err instanceof PipelineSheetsSyncError) {
-      return c.json({ error: "sheets_sync_failed", rolled_back: true }, 502);
+      const detail = err.cause instanceof Error ? err.cause.message : String(err.cause);
+      return c.json({ error: "sheets_sync_failed", rolled_back: true, detail }, 502);
     }
     if (err instanceof LLMValidationError) {
       return c.json({ error: "llm_validation_failed", message: err.message }, 422);

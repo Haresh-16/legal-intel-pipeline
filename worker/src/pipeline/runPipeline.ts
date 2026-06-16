@@ -209,7 +209,13 @@ export async function runPipeline(input: PipelineInput, deps: PipelineDeps): Pro
     await appendRow(env, SHEET_TABS.outputQueue, outputQueueToRow(publicOutputRow as typeof schema.outputQueue.$inferSelect));
     await appendRow(env, SHEET_TABS.outputQueue, outputQueueToRow(internalOutputRow as typeof schema.outputQueue.$inferSelect));
   } catch (err) {
-    await repo.rollback({ sourceId, cardId, claimIds, outputIds: [publicOutputId, internalOutputId] });
+    try {
+      await repo.rollback({ sourceId, cardId, claimIds, outputIds: [publicOutputId, internalOutputId] });
+    } catch (rollbackErr) {
+      // Rollback failure is logged but not re-thrown — the original Sheets sync
+      // error is the failure the caller needs to know about.
+      console.error("[pipeline] D1 rollback failed after Sheets sync error:", rollbackErr);
+    }
     throw new PipelineSheetsSyncError(err);
   }
 
