@@ -6,7 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "legal-intel-db"
-database_id = "REPLACE_WITH_REAL_D1_DATABASE_ID"
+database_id = "fd2eb90e-bae9-4e60-b456-74324954c70a"
 migrations_dir = "src/db/migrations"
 
 # Secrets (set via `wrangler secret put <NAME>`, never committed):
