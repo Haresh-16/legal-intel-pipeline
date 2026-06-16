@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #f6f7f9;
+  color: #1a1a1a;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: #1f2937;
+}
+
+.nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav a.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.card-panel {
+  background: #ffffff;
+  border: 1px solid #e2e5ea;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eef0f3;
+  vertical-align: top;
+}
+
+textarea {
+  width: 100%;
+  min-height: 220px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  border: 1px solid #d0d4da;
+  border-radius: 6px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #93a4c3;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #6b7280;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-hold {
+  background: #fde68a;
+  color: #78350f;
+}
+
+.badge-approved {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+.badge-archived {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.badge-fetched {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+.badge-selected {
+  background: #fde68a;
+  color: #78350f;
+}
+
+.badge-ingested {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+.badge-rejected {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.internal-banner {
+  background: #f3e8ff;
+  color: #581c87;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.error-banner {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+select {
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #d0d4da;
+}

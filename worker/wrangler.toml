@@ -1,0 +1,20 @@
+name = "legal-intel-worker"
+main = "src/index.ts"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "legal-intel-db"
+database_id = "REPLACE_WITH_REAL_D1_DATABASE_ID"
+migrations_dir = "src/db/migrations"
+
+# Secrets (set via `wrangler secret put <NAME>`, never committed):
+#   GROQ_API_KEY
+#   THE_NEWS_API_TOKEN
+#   GOOGLE_SERVICE_ACCOUNT_EMAIL
+#   GOOGLE_PRIVATE_KEY
+#   GOOGLE_SHEETS_SPREADSHEET_ID
+
+[vars]
+# Non-secret defaults can go here; nothing required at scaffold stage.

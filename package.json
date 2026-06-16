@@ -1,0 +1,19 @@
+{
+  "name": "legal-intel-pipeline",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "worker",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:worker": "npm run dev --workspace=worker",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "test:worker": "npm run test --workspace=worker",
+    "build:frontend": "npm run build --workspace=frontend",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
