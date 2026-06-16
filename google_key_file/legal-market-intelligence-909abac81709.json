@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "legal-market-intelligence",
+  "private_key_id": "909abac817093c2974dd89d3498bb31a08f8427b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBd220m+OLjAzN\n6hkB/mjdHQppMRti//IJbD2DvmIdIfASYWOt2NKjz1SPNDhhGvy8+mlcHPXx7/5E\nuAK4KBXt0sQKLp18BDzYqLpIzMUPKcFrPA7QZvaYmtxTfACYm82pzS5V/VmASQpE\nkGieS3h4i08epo18w8i6vda0CvWVZXKa7Y7vu9Nq/u5U7sQeoYm2xCUb4sODlMRT\nL31pCfSAOa6DYwa7UX1phOgwVO4A9KYI7K0vn6ih5NfTNqpk94i1qjMNu8PH3cPy\n6q2XpvfSnDMuMBDwmk4o3R+W+QJPtGz61TmNe1cQy5U5o23tk8ZoqAKKI6Sf6gXD\nLRAgzLADAgMBAAECggEAXRrwIWiaR7iVGu3LrjF03uCQd5JJ90lsfktoiUPwrMt9\n4SKcWXhM2se3DpnXfigCNKIgXVOUqyPPztttd5nW/9acQLgxUxMpAy2kRM/DECqM\nqmJDUNkUWNnCKa02DjuA7PRRFdHwpjPAbMHAj1mLtxt37qzBz6bbLb+ZmZjimkva\nwKWDTHTOhC3l+/yAgKnAtnSgzZmVtcshGZkVGQ/TzdSoioFY0XKDatjmYBeRtI9W\nTTnr32yCeunB0gcIv3HINt/kbpEEHpBbbn5WuKazzgti8wUAuWllkCETEqYRvZAy\n94Qni+ZrAeC7VXWs7OVb1IYnAoe/nhnf/kv1+0Op3QKBgQDxjcwpBm5X6MLCGGuq\no8HFCEA85DlZIpx8GnwwAishh85qqw/KFPH9koG1czi6ZfXGyaXAnHDZpzTr574q\nwI70GVQsZTPA7aJuvzwsmrSVtnEhWVWQaVS9QylVZbrSePMW2W7wff2oNnsr1/5+\nSfC/RCCq4T8mESCdh6nZyCO9vwKBgQDNCWkq1mTKQxyA9eVgvoNvwxF8h6hqJwqg\ngIhb2kaYMPYCvBd8ifg6+E0OJfF21PQLnPWb8Z9yOqhqafKssdmGSpdAC2LkOA/u\nquQX5Enf6RAy8uPhCbU0axGEWXf5sdUVmqruyfyt55+sslRN/xpRmmjBA69fazoh\n8Y+KGhDmvQKBgBkJkpTaBsvz42QM9fP8/1O19DqbiVo03TV75U1wnBngosOpsXxH\nyYF4ExvEsqeXc+9D7XtWe9gDndep8KsrxGWGzpO/darUttZ12f3hl0BBZd6IDPdo\nA5GOiZVBcyjnwoKmzPn+hTFPXFsCC235qguZOy2bJVmDwvaxHijlttavAoGBALzb\n5EEPBfvAYWrwFH5OPaceWOcJ1bkhiQpaGj/xCIF657+RHVkbhMhcmi1kCcxZTwm7\nZAhmQWXoXeTW/i7QCvtFjZfyZP6uHQ7L3hmbr+hNNxyW2gwY8w37aUEtX/NhOFMU\nCkq1RsewyEU8ZacKSWXNApx3FnyfugY2CO8+Hz9JAoGBALeHyAkmp0cN/hk/7YQB\n8Of+PRsW8zSaWCGErYyi3hPtL+TZ65jeEb35S8wUKj8LjC5lby09DK1LWJgAHR2X\nE9VRUQWn/m/boo4VVyAtTO0qNwCKosC8n0RRpv4xk058NxVPbcwnb8fdemWmds2V\nmcP0rDPFMBsleZl7cfEOHV7r\n-----END PRIVATE KEY-----\n",
+  "client_email": "haresh123@legal-market-intelligence.iam.gserviceaccount.com",
+  "client_id": "115883678766622901506",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/haresh123%40legal-market-intelligence.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
